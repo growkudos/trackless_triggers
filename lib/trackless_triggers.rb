@@ -75,7 +75,7 @@ module ActiveRecord
         functions = []
 
         # read the database name from the connection pool - compatible with Padrino and Rails
-        dbname = ActiveRecord::Base.connection_pool.spec.config[:database]
+        dbname = ActiveRecord::Base.connection_db_config.database
 
         execute("SHOW FUNCTION STATUS WHERE DB='#{dbname}'").each do |row|
           func_info = FunctionInfoDefinition.new(*row)
@@ -96,7 +96,7 @@ module ActiveRecord
         stored_procedures = []
 
         # read the database name from the connection pool - compatible with Padrino and Rails
-        dbname = ActiveRecord::Base.connection_pool.spec.config[:database]
+        dbname = ActiveRecord::Base.connection_db_config.database
 
         execute("SHOW PROCEDURE STATUS WHERE DB='#{dbname}'").each do |row|
           sp_info = FunctionInfoDefinition.new(*row) # ok to use FunctionInfoDefinition to describe SP
