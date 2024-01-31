@@ -35,6 +35,6 @@ Remove a trigger:
 Only works with mysql for now.
 
 
-== Version 0.3.0, updated 2015-10-13
+== Version 1.0.0, updated 2024-01-31
 
-GrowKudos / Martyn Whitwell added support for Padrino and also for recording MySql Stored Procedures.
+GrowKudos / Engineering team added support for Active Record 6.1

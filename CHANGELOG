@@ -1,5 +1,9 @@
 = CHANGELOG
 
+== 1.0.0
+
+  * Update for ActiveRecord v6.1
+
 == 0.3.0
 
 	* added support for stored procedures and Padrino
