@@ -9,7 +9,7 @@ module ActiveRecord
 
     def tables(stream)
       trigger_old_tables(stream)
-      byebug
+
       # dump triggers
       @connection.tables.sort.each do |tbl|
         next if tbl == 'schema_info'
