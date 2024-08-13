@@ -9,8 +9,8 @@ module ActiveRecord
 
     def tables(stream)
       trigger_old_tables(stream)
-
-      # dump triggers 
+      byebug
+      # dump triggers
       @connection.tables.sort.each do |tbl|
         next if tbl == 'schema_info'
         dump_table_triggers(tbl, stream)
@@ -34,7 +34,7 @@ module ActiveRecord
     def dump_functions(stream)
       functions = @connection.functions
       functions.each do |function|
-        stream.print "  add_function \"#{function.definition.gsub(/DEFINER=`\w*`@`\w*` /i,'')}\"" if function.definition.present?
+        stream.print "  add_function \"#{function.definition.gsub(/DEFINER=`\S*`@`\S*` /i,'')}\"" if function.definition.present?
         stream.puts
       end
     end
@@ -42,7 +42,7 @@ module ActiveRecord
     def dump_stored_procedures(stream)
       stored_procedures = @connection.stored_procedures
       stored_procedures.each do |stored_procedure|
-        stream.print "  add_stored_procedure \"#{stored_procedure.definition.gsub(/DEFINER=`\w*`@`\w*` /i,'')}\"" if stored_procedure.definition.present?
+        stream.print "  add_stored_procedure \"#{stored_procedure.definition.gsub(/DEFINER=`\S*`@`\S*` /i,'')}\"" if stored_procedure.definition.present?
         stream.puts
       end
     end
